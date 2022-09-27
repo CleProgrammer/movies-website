@@ -1,0 +1,64 @@
+.lists {
+    height: 380px;
+}
+
+.list-movies div {
+    width: 50px;
+}
+
+.list-movies img {
+    width: 200px;
+    max-width: 220px;
+    border: 2px solid white;
+    transition: all ease 0.3s;
+}
+
+.list-movies img:hover {
+    border: 2px solid rgb(184, 184, 184);
+    width: 210px;
+}
+
+.list-tag {
+    font-size: 25px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: white;
+}
+
+.list-movies {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 4500px;
+    margin-bottom: 30px;
+    transition: all ease 0.5s;
+}
+
+.list-less,
+.list-plus {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 40px;
+    height: 100px;
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    font-size: 50px;
+    font-weight: bold;
+    position: absolute;
+    margin-top: 150px;
+    margin-left: 20px;
+    opacity: 50%;
+    cursor: pointer;
+}
+
+.list-plus {
+    margin-left: 93%;
+    transition: all ease 0.2s;
+}
+
+.list-less:hover,
+.list-plus:hover {
+    opacity: 80%;
+}
