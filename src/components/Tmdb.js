@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import MovieInfo from "./MovieInfo"
 import PreviousNext from "./PreviousNext"
+import SelectedMovie from "./selectedMovie"
 import './Tmdb.css'
 
 const api_Key = '7d58ee24c13cc8835141ecd3e5aca05a'
@@ -13,9 +14,12 @@ const catchMovies = async (link) => {
 }
 
 export default ()   => {
+    const c = (cl) => document.querySelector(cl)
+
     const [saveMovies, setSaveMovies] = useState([])
     const [saveRandomId, setSaveRandomId] = useState([])
     const [checkMovieInfo, setCheckMovieInfo] = useState(true)
+    const [saveIdModal, setsaveIdModal] = useState()
 
     const movies = async () => { 
         return [
@@ -51,17 +55,24 @@ export default ()   => {
         }
     }
 
+    function getIdMovie(e) {
+        c('.modal-movie-info').style.display = 'flex'
+        setsaveIdModal( e.target.id )
+    }
+
     useEffect(() => {
-        getMovieId()  
+        getMovieId()
     })
     
     return (
         <>  
+            {<SelectedMovie idMovie={saveIdModal} />}
             {<MovieInfo idMovie={saveRandomId} />}
             
             <div className="main-list">{saveMovies.map((movie) => 
-                <PreviousNext movie={movie}/>
+                <PreviousNext movie={movie} getIdMovie={getIdMovie} />
             )}</div>
+            
         </>
     )
 }
